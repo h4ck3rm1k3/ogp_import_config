@@ -1,0 +1,37 @@
+1. Tutorial installing django on Debian
+
+apt-get install python-django python-mysqldb
+
+# NOTE IF django-admin.py does not work
+link <django_installation>/bin/django-admin.py to whereever on your PATH.
+
+sudo ln -s /usr/local/lib/python2.6/dist-packages/django/bin/django-admin.py /usr/local/bin/django-admin.py
+
+#You may get a "permission denied" message after this. Changed the permissions of the django-admin.py file to be executable.
+
+sudo chmod +x /usr/local/bin/django-admin.py
+
+
+2. Configure apache
+vi /etc/apache2/sites-available/default
+place the following lines between the <VirtualHost ... >...</VirtualHost> container:
+[...]
+<Location "/mysite">
+    SetHandler python-program
+    PythonHandler django.core.handlers.modpython
+    SetEnv DJANGO_SETTINGS_MODULE mysite.settings
+    PythonDebug On
+    PythonPath "['/home/mycode'] + sys.path"
+</Location>
+[...]
+
+The path in the first line (<Location "/mysite">) refers to the URL - meaning this configuration will be used if you use /mysite in the URL (e.g. http://www.example.com/mysite). You can change this to your likings. Please adjust the other values (SetEnv DJANGO_SETTINGS_MODULE mysite.settings and PythonPath "['/home/mycode'] + sys.path") to the name of your project and the path where it is located.
+
+3.Restart Apache afterwards:
+
+/etc/init.d/apache2 restart
+
+Now you can access http://www.example.com/mysite
+
+
+#SOURCE: the full tutorial can be found at http://www.howtoforge.com/installing-django-on-debian-etch-apache2-mod_python
