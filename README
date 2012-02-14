@@ -1,3 +1,11 @@
+
+
+0. Setup the mysql database 
+
+mysql> create database ogp_import_config;
+mysql> grant all PRIVILEGES on ogp_import_config.* to 'ogp_import_admin'@'localhost' identified by 'ogp_import_config_dmin_password';
+
+
 1. Tutorial installing django on Debian
 
 apt-get install python-django python-mysqldb

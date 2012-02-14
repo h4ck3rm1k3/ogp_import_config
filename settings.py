@@ -12,9 +12,9 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'mysite',                      # Or path to database file if using sqlite3.
-        'USER': 'mysiteadmin',                      # Not used with sqlite3.
-        'PASSWORD': 'mysiteadmin_password',                  # Not used with sqlite3.
+        'NAME': 'ogp_import_config',                      # Or path to database file if using sqlite3.
+        'USER': 'ogp_import_admin',                      # Not used with sqlite3.
+        'PASSWORD': 'ogp_import_config_dmin_password',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -75,7 +75,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'mysite.urls'
+ROOT_URLCONF = 'ogp_import_config.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -93,4 +93,5 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'buildings',
 )
