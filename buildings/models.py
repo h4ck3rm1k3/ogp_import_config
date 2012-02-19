@@ -20,7 +20,9 @@ class Logger(models.Model):
     location      = models.ForeignKey('Building', null=False, blank=False, related_name='loggers')
     Number = models.CharField(max_length=60)
     Description = models.CharField(max_length=120)
+    Description2 = models.CharField(max_length=120)
     NetworkAddress = models.CharField(max_length=120)
     OSMNODEID = models.DecimalField(decimal_places=0, max_digits=15) # the osm id
     Lat = models.CharField(max_length=20)  #lat/lon of then center
     Lon = models.CharField(max_length=20) # lat/lon of the center of the building
+
